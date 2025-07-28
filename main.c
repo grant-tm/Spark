@@ -186,6 +186,20 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
         PostQuitMessage(0);
         return 0;
 
+    case WM_SIZING:
+    {
+        RECT r = {0};
+        if (GetClientRect(hwnd, &r))
+        {
+            Clay_Dimensions dim = (Clay_Dimensions){.height = r.bottom - r.top, .width = r.right - r.left};
+            Clay_SetLayoutDimensions(dim);
+        }
+        InvalidateRect(hwnd, NULL, false);
+
+        break;
+    }
+
+
     //-----------------------------------------------------
     // HANDLE CONTROL INPUTS
     //-----------------------------------------------------
