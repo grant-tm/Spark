@@ -302,7 +302,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrev, LPSTR lpCmd, int nCmdShow) 
         L"Sample Explorer",
         style | WS_VISIBLE,
         CW_USEDEFAULT, CW_USEDEFAULT,
-        800, 600,
+        480, 600,
         NULL, NULL, hInst, NULL);
 
     if (!hwnd) return -1;
@@ -310,7 +310,7 @@ int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrev, LPSTR lpCmd, int nCmdShow) 
     // Initialize Clay
     uint64_t clayRequiredMemory = Clay_MinMemorySize();
     Clay_Arena clayMemory = Clay_CreateArenaWithCapacityAndMemory(clayRequiredMemory, malloc(clayRequiredMemory));
-    clayContext = Clay_Initialize(clayMemory, (Clay_Dimensions){800, 600}, (Clay_ErrorHandler){HandleClayErrors});
+    clayContext = Clay_Initialize(clayMemory, (Clay_Dimensions){480, 600}, (Clay_ErrorHandler){HandleClayErrors});
     if (clayContext == NULL) {
         MessageBox(NULL, "Clay initialization failed!", "Error", MB_ICONEXCLAMATION | MB_OK);
         return 0;
