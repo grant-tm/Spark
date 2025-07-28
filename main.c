@@ -133,13 +133,32 @@ Clay_RenderCommandArray CreateMainLayout()
             CLAY({
                 .id = CLAY_ID("FileArea"),
                 .layout = { 
-                    //.layoutDirection = CLAY_TOP_TO_BOTTOM, 
-                    .sizing = { .width = CLAY_SIZING_FIXED(340), .height = CLAY_SIZING_GROW(0) }, 
-                    .padding = CLAY_PADDING_ALL(16), 
-                    .childGap = 16 
+                    .layoutDirection = CLAY_TOP_TO_BOTTOM, 
+                    .sizing = { .width = CLAY_SIZING_GROW(0), .height = CLAY_SIZING_GROW(0) }, 
+                    .padding = CLAY_PADDING_ALL(0), 
+                    .childGap = 0 
                 },
                 .backgroundColor = COLOR_PRIMARY
-            }) {}
+            }) {
+                CLAY({
+                    .id = CLAY_ID("FiltersCollapsed"),
+                    .layout = {
+                        .layoutDirection = CLAY_LEFT_TO_RIGHT,
+                        .sizing = { . width = CLAY_SIZING_GROW(0), .height = CLAY_SIZING_FIXED(60)},
+                        .padding = CLAY_PADDING_ALL(12),
+                        .childGap = 12
+                    }
+                }) {
+                    CLAY({
+                        .id = CLAY_ID("SearchBar"),
+                        .layout = {
+                            .sizing = {.width = CLAY_SIZING_GROW(0), .height = CLAY_SIZING_GROW(0)},
+                        },
+                        .backgroundColor = {204, 204, 204, 255},
+                        .cornerRadius = {6, 6, 6, 6}
+                    }) {}
+                }
+            }
         }
     }
     
