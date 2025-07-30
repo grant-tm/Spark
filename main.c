@@ -10,7 +10,7 @@
 #include "external/clay/renderers/win32_gdi/clay_renderer_gdi.c"
 
 // Color Definitions
-const Clay_Color COLOR_PRIMARY = (Clay_Color) {52, 58, 59, 255};
+const Clay_Color COLOR_PRIMARY = (Clay_Color) {25, 27, 28, 255};
 const Clay_Color COLOR_SIDEBAR = (Clay_Color) {31, 34, 34, 255};
 const Clay_Color COLOR_HEADER = (Clay_Color) {39, 42, 43, 255};
 const Clay_Color COLOR_OUTLINE = (Clay_Color) {52, 58, 59, 255};
