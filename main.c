@@ -95,7 +95,8 @@ Clay_RenderCommandArray CreateMainLayout()
             .padding = CLAY_PADDING_ALL(0), 
             .childGap = 0 
         }, 
-        .backgroundColor = COLOR_PRIMARY
+        .backgroundColor = COLOR_PRIMARY,
+        .border = { .width = { .left = 2.f, .right = 2.f, .top = 2.f, .bottom = 2.f, .betweenChildren = 2.f }, .color = COLOR_OUTLINE }
     }) {
         
         // Top Bar
@@ -106,7 +107,8 @@ Clay_RenderCommandArray CreateMainLayout()
                 .padding = CLAY_PADDING_ALL(0),
                 .childGap = 0
             },
-            .backgroundColor = COLOR_HEADER
+            .backgroundColor = COLOR_HEADER,
+            .border = { .width = { .left = 2.f, .right = 2.f, .top = 2.f, .bottom = 0.f, .betweenChildren = 2.f }, .color = COLOR_OUTLINE }
         }) {}
 
         // Main content area
@@ -116,7 +118,7 @@ Clay_RenderCommandArray CreateMainLayout()
                 .layoutDirection = CLAY_LEFT_TO_RIGHT,
                 .sizing = { .width = CLAY_SIZING_GROW(0), .height = CLAY_SIZING_GROW(0) } 
             }, 
-            .backgroundColor = COLOR_PRIMARY
+            .backgroundColor = COLOR_PRIMARY,
         }) {
             // Side Bar
             CLAY({
@@ -126,7 +128,8 @@ Clay_RenderCommandArray CreateMainLayout()
                     .padding = CLAY_PADDING_ALL(0), 
                     .childGap = 0 
                 },
-                .backgroundColor = COLOR_SIDEBAR
+                .backgroundColor = COLOR_SIDEBAR,
+                .border = { .width = { .left = .0f, .right = 2.f, .top = 0.f, .bottom = 2.f, .betweenChildren = 2.f }, .color = COLOR_OUTLINE }
             }) {}
 
             // Main Interactive Area
@@ -155,7 +158,8 @@ Clay_RenderCommandArray CreateMainLayout()
                             .sizing = {.width = CLAY_SIZING_GROW(0), .height = CLAY_SIZING_GROW(0)},
                         },
                         .backgroundColor = {204, 204, 204, 255},
-                        .cornerRadius = {6, 6, 6, 6}
+                        .cornerRadius = CLAY_CORNER_RADIUS(6),
+                        .border = { .width = { .left = 2.f, .right = 2.f, .top = 2.f, .bottom = 2.f, .betweenChildren = 2.f }, .color = COLOR_OUTLINE }
                     }) {}
                 }
             }
