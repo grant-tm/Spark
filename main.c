@@ -1,3 +1,5 @@
+#include "base/base.h"
+
 #define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <windowsx.h>
@@ -8,6 +10,7 @@
 #define CLAY_IMPLEMENTATION
 #include "external/clay/clay.h"
 #include "external/clay/renderers/win32_gdi/clay_renderer_gdi.c"
+//#include "external/clay/renderers/cairo/clay_renderer_cairo.c"
 
 // Color Definitions
 const Clay_Color COLOR_PRIMARY = (Clay_Color) {25, 27, 28, 255};
@@ -20,7 +23,7 @@ Clay_Context* clayContext = NULL;
 HFONT fonts[1];
 
 // Error handler for Clay
-void HandleClayErrors(Clay_ErrorData errorData) {
+def void HandleClayErrors(Clay_ErrorData errorData) {
     printf("Clay Error: %s\n", errorData.errorText.chars);
     switch(errorData.errorType) {
         case CLAY_ERROR_TYPE_TEXT_MEASUREMENT_FUNCTION_NOT_PROVIDED:
@@ -42,7 +45,7 @@ void HandleClayErrors(Clay_ErrorData errorData) {
 }
 
 // Text measurement function for Win32 GDI
-static inline Clay_Dimensions MeasureText(Clay_StringSlice text, Clay_TextElementConfig *config, void *userData) {
+def static inline Clay_Dimensions MeasureText(Clay_StringSlice text, Clay_TextElementConfig *config, void *userData) {
     if (userData != NULL) {
         HFONT* fonts = (HFONT*) userData;
         HFONT hFont = fonts[config->fontId];
@@ -82,7 +85,7 @@ static inline Clay_Dimensions MeasureText(Clay_StringSlice text, Clay_TextElemen
 #define BUTTON_WIDTH 46
 
 // Create the main layout
-Clay_RenderCommandArray CreateMainLayout()
+def Clay_RenderCommandArray CreateMainLayout()
 {
     Clay_BeginLayout();
     
@@ -170,7 +173,7 @@ Clay_RenderCommandArray CreateMainLayout()
     return renderCommands;
 }
 
-LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
+def LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     switch (msg) {
     
     //-----------------------------------------------------
@@ -284,7 +287,7 @@ LRESULT CALLBACK WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
     return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
-int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrev, LPSTR lpCmd, int nCmdShow) {
+def int WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrev, LPSTR lpCmd, int nCmdShow) {
     WNDCLASSEXW wc = { 0 };
     wc.cbSize = sizeof(wc);
     wc.lpfnWndProc = WndProc;
